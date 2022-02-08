@@ -6,11 +6,15 @@ import { fetchProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 
+// deconstructing the product lists so that all keys are within props
 function ProductList (props) {
   const { children, history } = props
   const products = useSelector(state => state.products)
   const dispatch = useDispatch()
+  // useEffect allows you to perform a side effect within the function
+  // runs after every completed render
   useEffect(() => {
+    // dispatches an action, and triggers a state change 
     dispatch(fetchProducts())
   }, [])
 

@@ -20,6 +20,8 @@ export function fetchProductsSuccess (products) {
 export function fetchProducts () {
   return (dispatch) => {
     dispatch(fetchProductsPending())
+    // calls getProducts from api > products > get products
+    // which is getting an api '/api/v1/products'
     return getProducts()
       .then((products) => {
         dispatch(fetchProductsSuccess(products))
