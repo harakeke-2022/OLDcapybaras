@@ -17,6 +17,12 @@ exports.seed = knex => {
       name: 'Sweet As Hummus',
       description: 'Garlic to the max - we really outdid ourselves here. Don\'t breathe too close to anyone for a while!',
       country: 'New Zealand'
+    },
+    {
+      id: 4,
+      name: 'Sweet As Chutney',
+      description: 'Um yum?',
+      country: 'Scotland'
     }
   ])
 }
