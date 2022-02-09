@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import OrderItem from './OrderItem'
+import { updateOrder, fetchOrders } from '../actions/orders'
 
 function Order (props) {
   const { id, products, createdAt, status } = props.order
+  const dispatch = useDispatch()
+  // const [newStatus, setStatus] = useState(status)
 
   function cancelOrder () {
-    console.log('coming soon!')
+    dispatch(updateOrder(id, 'cancelled'))
+    dispatch(fetchOrders())
   }
 
   function completeOrder () {
-    console.log('coming soon!')
+    dispatch(updateOrder(id, 'completed'))
+    dispatch(fetchOrders())
   }
 
   return (

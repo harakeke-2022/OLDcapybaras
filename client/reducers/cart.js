@@ -4,6 +4,8 @@ import {
   UPDATE_CART
 } from '../actions/cart'
 
+import { ADD_ORDER_SUCCESS } from '../actions/orders'
+
 function cart (state = [], action) {
   switch (action.type) {
     case ADD_TO_CART:
@@ -14,6 +16,9 @@ function cart (state = [], action) {
 
     case UPDATE_CART:
       return getUpdatedCart(state, action.updateInfo)
+
+    case ADD_ORDER_SUCCESS:
+      return []
 
     default:
       return state
@@ -40,6 +45,7 @@ export function getNewCart (cart, product) {
   } else {
     // If the id doesn't exist, it will be added with a quantity of 1.
     newCart.push({ ...product, quantity: 1 })
+    console.log(newCart)
     return newCart
   }
 }

@@ -5,7 +5,8 @@ const { formatOrder, formatOrderList } = require('../formatter')
 module.exports = {
   listOrders,
   addOrder,
-  editOrderStatus
+  editOrderStatus,
+  deleteOrder
 }
 
 function listOrders (db = connection) {
@@ -64,6 +65,12 @@ function editOrderStatus (id, newStatus, db = connection) {
         .where('id', id)
     })
     .then(() => findOrderById(id, db))
+}
+
+function deleteOrder (id, db = connection) {
+  return db('orders')
+    .where({ id: id })
+    .del()
 }
 
 function orderExists (id, db = connection) {

@@ -46,7 +46,7 @@ function formatOrder (orderLines) {
       ? order = createOrder(item)
       : order.products.push(createProduct(item))
   })
-  order.products = sortByIdAscending(order.products)
+  // order.products = sortByIdAscending(order.products)
   return order
 }
 
