@@ -8,4 +8,4 @@ export function postOrder(order) {
 }
 
 
-// routes> order.js > requestOrder()
+// sending "order" to "router >> orders.js"

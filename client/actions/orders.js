@@ -25,17 +25,15 @@ export function placeOrder(cart) {
 
     dispatch(placeOrderPending())
     return postOrder(cart)
-      .then((orders) => {
 
+      .then((orders) => {
         dispatch(placeOrderSuccess(orders))
+        //  to redirect the user to the My Orders page
+        console.log('history');
+        // history.push()
         return null
       })
       .catch((err) => {
-        // if the error is from our routes, this will use the message our route
-        // sends back, rather than the generic 'Internal Server Error' from a
-        // status 500
-        // if the error is from elsewhere in the Promise chain, there won't be
-        // an err.response object, so we use err.message
         const errMessage = err.response?.text || err.message
         dispatch(showError(errMessage))
       })

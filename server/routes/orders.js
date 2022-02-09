@@ -8,7 +8,7 @@ module.exports = router
 router.get('/', (req, res) => {
   db.listOrders()
     .then((orders) => {
-      res.send(orders)
+      res.json(orders)
       return null
     })
     .catch((err) => {
@@ -18,8 +18,8 @@ router.get('/', (req, res) => {
 
 // POST /api/v1/orders/
 router.post('/', (req, res) => {
-  const requestOrder = req.body
 
+  const requestOrder = req.body
 
   db.addOrder(requestOrder)
     .then(() => {

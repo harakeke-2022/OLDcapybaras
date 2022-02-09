@@ -6,7 +6,11 @@ import CartItem from './CartItem'
 
 import { placeOrder } from '../actions/orders'
 
+import { useHistory } from "react-router-dom";
+
+
 function Cart(props) {
+  let history = useHistory();
   const { children } = props
   const cart = useSelector(state => state.cart)
 
@@ -17,9 +21,10 @@ function Cart(props) {
   // })
 
   function submitCart(event) {
-    console.log('this is submitCart', cart)
+    console.log('event', event)
     event.preventDefault()
     dispatch(placeOrder(cart))
+    history.push("/orders");
 
   }
 
