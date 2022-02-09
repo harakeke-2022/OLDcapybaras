@@ -1,42 +1,29 @@
-import { postOrder } from '../api/orders';
-// import { watiting } from '../reducers/waiting'
-// import { listOrders } from '../reducers/cart'
-export const SHOW_DONE = 'SHOW_DONE'
+import { postOrder, getOrders } from '../api/orders';
 
-
-export function showDone(success) {
-    return {
-        type: SHOW_DONE,
-        success
-    }
-}
 export const PLACE_ORDERS_PENDING = 'PLACE_ORDERS_PENDING'
 export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS'
 
 export function placeOrdersPending() {
     return {
-        type: PLACE_ORDERS_PENDING
+        type: PLACE_ORDERS_PENDING,
     }
 }
 
-export function placeOrdersSuccess(orders) {
+export function placeOrdersSuccess(condition) {
     return {
         type: PLACE_ORDER_SUCCESS,
-        orders
+        condition: condition
     }
 }
-
 
 export function placeOrder(orders) {
     console.log('hey from Action/orders FIRST', orders);
     return (dispatch) => {
-        // showDone(false)
-        // dispatch(placeOrdersPending())
-        // dispatch(listOrders(orders))
+        dispatch(placeOrdersPending())
         return postOrder(orders)
             .then(() => {
                 dispatch(placeOrdersSuccess(true))
-                dispatch(showDone(true))
+
                 return null
             })
             .catch(error => {
@@ -45,3 +32,16 @@ export function placeOrder(orders) {
     }
 }
 
+export function fetchOrders() {
+    return (dispatch) => {
+        dispatch(placeOrdersPending())
+        return getOrders()
+            .then(() => {
+                dispatch(placeOrdersSuccess(true))
+                return null
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+}

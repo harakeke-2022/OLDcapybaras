@@ -3,15 +3,14 @@ import request from 'superagent'
 const orderUrl = '/api/v1/orders/'
 
 export function postOrder(orders) {
-    // const { name, quote } = orders //somthing form form get date. might be place order Array 
-    console.log('this is from Api/orders', orders);
     return request
         .post(orderUrl)
-        .send(orders)  //sending date somthing.......
-        .then(res => res.body)
+        .send(orders)  
 }
 
 
-export function getOrders(params) {
-
+export function getOrders() {
+    return request
+        .get(orderUrl)
+        .then(res => res.body)
 }

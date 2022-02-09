@@ -3,6 +3,7 @@ import { PLACE_ORDERS_PENDING, PLACE_ORDER_SUCCESS } from '../actions/orders'
 import { SHOW_ERROR } from '../actions/error'
 
 function waiting(state = false, action) {
+  console.log(state, action)
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
     case PLACE_ORDERS_PENDING:

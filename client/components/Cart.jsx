@@ -14,6 +14,7 @@ function Cart(props) {
     const action = placeOrder(cart)
     dispatch(action)
   }
+  
 
   return cart.length
     ? (
