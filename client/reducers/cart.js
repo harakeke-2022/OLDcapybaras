@@ -1,11 +1,14 @@
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
-  UPDATE_CART, 
-  PLACE_ORDER_SUCCESS
+  UPDATE_CART
 } from '../actions/cart'
 
-function cart (state = [], action) {
+import { PLACE_ORDER_SUCCESS } from '../actions/orders'
+
+const initial = []
+
+function cart (state = initial, action) {
   switch (action.type) {
     case ADD_TO_CART:
       return getNewCart(state, action.product)
@@ -17,7 +20,7 @@ function cart (state = [], action) {
       return getUpdatedCart(state, action.updateInfo)
 
     case PLACE_ORDER_SUCCESS:
-      return []
+      return initial
 
     default:
       return state

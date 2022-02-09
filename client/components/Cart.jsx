@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { Link } from 'react-router-dom'
-import { placeOrder, createOrder } from '../actions/orders'
+import { createOrder } from '../actions/orders'
 
 import CartItem from './CartItem'
 import Order from './Order'
