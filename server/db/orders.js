@@ -8,7 +8,7 @@ module.exports = {
   editOrderStatus
 }
 
-function listOrders (db = connection) {
+function listOrders(db = connection) {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
@@ -18,13 +18,14 @@ function listOrders (db = connection) {
       'quantity',
       'created_at as createdAt',
       'status',
-      'name')
+      'name'
+    )
     .then(formatOrderList)
 }
 
-function addOrder (orderRequest, db = connection) {
+function addOrder(orderRequest, db = connection) {
   // remove item names from order (we have the id)
-  const order = orderRequest.map((item) => {
+  const order = orderRequest.map(item => {
     return {
       id: item.id,
       quantity: item.quantity
@@ -33,18 +34,22 @@ function addOrder (orderRequest, db = connection) {
 
   const hasInvalidQuantity = order.some(item => item.quantity === 0)
   if (hasInvalidQuantity) {
-    return Promise.reject(new Error('INVALID ORDER: Quantity required for all items'))
+    return Promise.reject(
+      new Error('INVALID ORDER: Quantity required for all items')
+    )
   }
   // will only get here to insert if the order is valid
   const timestamp = new Date(Date.now())
-  return db('orders').insert({
-    created_at: timestamp,
-    status: 'pending'
-  })
+
+  return db('orders')
+    .insert({
+      created_at: timestamp,
+      status: 'pending'
+    })
     .then(([id]) => addOrderLines(id, order, db))
 }
 
-function addOrderLines (id, order, db = connection) {
+function addOrderLines(id, order, db = connection) {
   const orderLines = order.map(item => {
     return {
       order_id: id,
@@ -52,21 +57,20 @@ function addOrderLines (id, order, db = connection) {
       quantity: item.quantity
     }
   })
-  return db('orders_products').insert(orderLines)
+  return db('orders_products')
+    .insert(orderLines)
     .then(() => null)
 }
 
-function editOrderStatus (id, newStatus, db = connection) {
+function editOrderStatus(id, newStatus, db = connection) {
   return orderExists(id, db)
     .then(() => {
-      return db('orders')
-        .update({ status: newStatus })
-        .where('id', id)
+      return db('orders').update({ status: newStatus }).where('id', id)
     })
     .then(() => findOrderById(id, db))
 }
 
-function orderExists (id, db = connection) {
+function orderExists(id, db = connection) {
   return db('orders')
     .where('id', id)
     .first()
@@ -76,7 +80,7 @@ function orderExists (id, db = connection) {
     })
 }
 
-function findOrderById (id, db = connection) {
+function findOrderById(id, db = connection) {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
@@ -86,7 +90,8 @@ function findOrderById (id, db = connection) {
       'quantity',
       'created_at as createdAt',
       'status',
-      'name')
+      'name'
+    )
     .where('orders.id', id)
     .then(formatOrder)
 }
