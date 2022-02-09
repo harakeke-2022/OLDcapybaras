@@ -18,7 +18,16 @@ export function placeOrderSuccess () {
 }
 
 export function placeOrder () {
-  return {
-    type
+  return (dispatch) => {
+    dispatch(placeOrderPending())
+    return postOrder()
+      .then(() => {
+        dispatch(placeOrderSuccess())
+        return null
+      })
+      .catch((err) => {
+        const errMessage = err.response?.text || err.message
+        dispatch(showError(errMessage))
+      })
   }
 }
