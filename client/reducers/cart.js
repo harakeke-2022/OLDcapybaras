@@ -1,7 +1,8 @@
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
-  UPDATE_CART
+  UPDATE_CART, 
+  PLACE_ORDER_SUCCESS
 } from '../actions/cart'
 
 function cart (state = [], action) {
@@ -14,6 +15,9 @@ function cart (state = [], action) {
 
     case UPDATE_CART:
       return getUpdatedCart(state, action.updateInfo)
+
+    case PLACE_ORDER_SUCCESS:
+      return []
 
     default:
       return state
