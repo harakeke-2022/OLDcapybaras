@@ -10,11 +10,8 @@ function Cart(props) {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
-  function submitCart(orders) {
-    console.log('coming soon!', orders)
-
-
-    const action = placeOrder(orders)
+  function submitCart() {
+    const action = placeOrder(cart)
     dispatch(action)
   }
 
@@ -45,7 +42,7 @@ function Cart(props) {
             {children} { /* Holds the WaitIndicator */}
             <button
               className='button-primary'
-              onClick={() => submitCart(cart)}>
+              onClick={submitCart}>
               Place Order
             </button>
           </span>
