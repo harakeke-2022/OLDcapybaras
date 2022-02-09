@@ -17,6 +17,7 @@ export function fetchProductsSuccess (products) {
   }
 }
 
+// this action creator returns a function rather than an object so it is an ASYNC action creator.
 export function fetchProducts () {
   return (dispatch) => {
     dispatch(fetchProductsPending())
