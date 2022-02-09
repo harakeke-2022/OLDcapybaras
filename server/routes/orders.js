@@ -4,11 +4,11 @@ const router = express.Router()
 module.exports = router
 
 
-// GET
+// GET /api/v1/orders/
 router.get('/', (req, res) => {
   db.listOrders()
     .then((orders) => {
-      res.json()
+      res.send(orders)
       return null
     })
     .catch((err) => {
@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 
 // POST /api/v1/orders/
 router.post('/', (req, res) => {
-  console.log(req.body);
   const requestOrder = req.body
 
-  db.addOrder(requestOrder)
+
+  db.addOrder([requestOrder])
     .then(() => {
       res.sendStatus(201)
       return null
