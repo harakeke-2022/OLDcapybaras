@@ -1,16 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import placeOrder from '../actions/orders'
 import { Link } from 'react-router-dom'
-
 import CartItem from './CartItem'
 
 function Cart (props) {
+  const dispatch = useDispatch()
   const { children } = props
   const cart = useSelector(state => state.cart)
 
   function submitCart () {
-    console.log('coming soon!')
+    console.log('submit')
+    dispatch(placeOrder(cart))
   }
 
   return cart.length
