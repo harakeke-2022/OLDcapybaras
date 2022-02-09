@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
@@ -10,7 +10,8 @@ function Cart (props) {
   const cart = useSelector(state => state.cart)
 
   function submitCart () {
-    console.log('coming soon!')
+    const dispatch = useDispatch()
+    
   }
 
   return cart.length

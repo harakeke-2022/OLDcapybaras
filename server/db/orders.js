@@ -37,6 +37,7 @@ function addOrder (orderRequest, db = connection) {
   }
   // will only get here to insert if the order is valid
   const timestamp = new Date(Date.now())
+
   return db('orders').insert({
     created_at: timestamp,
     status: 'pending'
