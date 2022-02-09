@@ -8,11 +8,11 @@ import CartItem from './CartItem'
 function Cart (props) {
   const { children } = props
   const cart = useSelector(state => state.cart)
-
+//////////////////////////////////////////////////////
   function submitCart () {
     console.log('coming soon!')
   }
-
+//////////////////////////////////////////////////////
   return cart.length
     ? (
       <div className='cart'>
