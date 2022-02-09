@@ -17,6 +17,8 @@ export function fetchProductsSuccess (products) {
   }
 }
 
+// This function returns a function called getProducts,
+// Get products 
 export function fetchProducts () {
   return (dispatch) => {
     dispatch(fetchProductsPending())

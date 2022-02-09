@@ -33,7 +33,7 @@
     ]
   },
   "dependencies": {
-    "knex": "^1.0.1",
+    
     "express": "^4.17.1",
     "react-router-dom": "^5.2.0",
     "react": "^17.0.2",
@@ -42,7 +42,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.7",
-    "@vscode/sqlite3": "^5.0.7",
+    "knex": "^0.95.10",
+    "sqlite3": "^5.0.2",
     "superagent": "^6.1.0"
   },
   "devDependencies": {
