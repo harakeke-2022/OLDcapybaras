@@ -1,6 +1,9 @@
 import request from 'superagent'
 
-export function postOrder () {
-  return request.get('/api/v1/products')
-    .then((res) => res.body)
+const url = '/api/v1/orders'
+
+export function postOrder (order) {
+  return request
+    .post(url)
+    .send(order) // to server
 }
