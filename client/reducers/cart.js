@@ -4,10 +4,15 @@ import {
   UPDATE_CART
 } from '../actions/cart'
 
+import { PLACE_ORDER_SUCCESS } from '../actions/orders'
+
 function cart (state = [], action) {
   switch (action.type) {
     case ADD_TO_CART:
       return getNewCart(state, action.product)
+
+    case PLACE_ORDER_SUCCESS:
+      return []
 
     case DELETE_FROM_CART:
       return state.filter(item => item.id !== action.id)
