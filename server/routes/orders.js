@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
   const requestOrder = req.body
 
 
-  db.addOrder([requestOrder])
+  db.addOrder(requestOrder)
     .then(() => {
       res.sendStatus(201)
       return null

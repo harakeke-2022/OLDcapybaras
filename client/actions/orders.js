@@ -20,12 +20,13 @@ export function placeOrderSuccess(orders) {
 }
 
 
-export function placeOrder() {
+export function placeOrder(cart) {
   return (dispatch) => {
 
     dispatch(placeOrderPending())
-    return postOrder()
+    return postOrder(cart)
       .then((orders) => {
+
         dispatch(placeOrderSuccess(orders))
         return null
       })

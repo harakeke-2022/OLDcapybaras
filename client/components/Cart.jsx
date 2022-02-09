@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -17,11 +17,9 @@ function Cart(props) {
   // })
 
   function submitCart(event) {
-    console.log('this is submit')
-
+    console.log('this is submitCart', cart)
     event.preventDefault()
-
-    dispatch(placeOrder())
+    dispatch(placeOrder(cart))
 
   }
 
