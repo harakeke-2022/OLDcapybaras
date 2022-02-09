@@ -1,3 +1,4 @@
+import { PLACE_ORDER_SUCCESS } from '../actions/orders'
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
@@ -14,6 +15,10 @@ function cart (state = [], action) {
 
     case UPDATE_CART:
       return getUpdatedCart(state, action.updateInfo)
+
+    case PLACE_ORDER_SUCCESS:
+      console.log('reducer/cart - order has been submitted')
+      return []
 
     default:
       return state

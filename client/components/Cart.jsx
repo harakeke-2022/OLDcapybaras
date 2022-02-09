@@ -7,7 +7,7 @@ import CartItem from './CartItem'
 import { placeOrder } from '../actions/orders'
 
 function Cart (props) {
-  const { children } = props
+  const { children, history } = props
   const cart = useSelector(state => state.cart)
 
   const dispatch = useDispatch()
@@ -16,6 +16,7 @@ function Cart (props) {
     console.log('submitCart: ', cart)
     event.preventDefault()
     dispatch(placeOrder(cart))
+    history.push('/orders')
   }
 
   return cart.length
