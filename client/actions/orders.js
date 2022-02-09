@@ -1,6 +1,7 @@
 import { postOrder } from '../api/orders'
 
 export const PLACE_ORDERS = 'PLACE_ORDERS'
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCES'
 
 export function placeOrder (order) {
   return {
@@ -10,6 +11,12 @@ export function placeOrder (order) {
   }
 }
 
+export function placeOrderSuccess(){
+  return {
+    type: PLACE_ORDER_SUCCESS,
+}
+}
+
 export function makeOrder() {
   return (dispatch) => {
     return postOrder()
@@ -17,11 +24,18 @@ export function makeOrder() {
         dispatch(placeOrder(order))
         return null 
       })
+      .then(() => {
+        dispatch(placeOrderSuccess())
+        return null
+      })
+     
       .catch(err => {
       console.error(err)
     })
   }
 }
+
+
 
 // export function fetchFilms () {
 //   return (dispatch) => {

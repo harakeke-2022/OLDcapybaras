@@ -24,4 +24,3 @@ export function updateCart (updateInfo) {
   }
 }
 
-// export function placeOrderSuccess()

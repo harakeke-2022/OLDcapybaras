@@ -15,7 +15,6 @@ function Cart (props) {
   const order = useSelector(state => state.order)
 
   function submitCart () {
-
     dispatch(makeOrder())
   }
 
