@@ -1,3 +1,5 @@
+/// ie the shop component
+
 import React from 'react'
 import { Route } from 'react-router-dom'
 
@@ -23,8 +25,8 @@ function App () {
           <WaitIndicator />
         </Cart>
       }} />
-      <Route path='/orders' render={() => {
-        return <OrderList>
+      <Route path='/orders' render={({ history }) => {
+        return <OrderList history ={history}>
           <WaitIndicator />
         </OrderList>
       }} />

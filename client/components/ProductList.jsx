@@ -9,6 +9,8 @@ import ProductListItem from './ProductListItem'
 function ProductList (props) {
   const { children, history } = props
   const products = useSelector(state => state.products)
+/// remeber to look at the products action for this state. The actions ares not combined :) 
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchProducts())

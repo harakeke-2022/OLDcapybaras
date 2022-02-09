@@ -4,6 +4,10 @@ import {
   UPDATE_CART
 } from '../actions/cart'
 
+import {
+  FETCH_ORDER_SUCCESS
+} from '../actions/orders'
+
 function cart (state = [], action) {
   switch (action.type) {
     case ADD_TO_CART:
@@ -14,6 +18,9 @@ function cart (state = [], action) {
 
     case UPDATE_CART:
       return getUpdatedCart(state, action.updateInfo)
+
+    case FETCH_ORDER_SUCCESS:
+      return []
 
     default:
       return state
