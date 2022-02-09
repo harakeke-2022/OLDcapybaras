@@ -29,8 +29,7 @@ export function placeOrder(cart) {
       .then((orders) => {
         dispatch(placeOrderSuccess(orders))
         //  to redirect the user to the My Orders page
-        console.log('history');
-        // history.push()
+
         return null
       })
       .catch((err) => {

@@ -6,25 +6,23 @@ import CartItem from './CartItem'
 
 import { placeOrder } from '../actions/orders'
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 
 function Cart(props) {
-  let history = useHistory();
-  const { children } = props
+  // let history = useHistory();
+  const { children, history } = props
   const cart = useSelector(state => state.cart)
 
   const dispatch = useDispatch()
-  // const [orders, setOrders] = useState({
-  //   id: 1,
-  //   quantity: 0
-  // })
+  // using "dispatch" instead of useState
+  // BEFORE:const [orders, setOrders] = useState({ id: 1, quantity: 0 })
 
   function submitCart(event) {
-    console.log('event', event)
+    console.log('history', history)
     event.preventDefault()
     dispatch(placeOrder(cart))
-    history.push("/orders");
+    history.push('/orders');
 
   }
 
