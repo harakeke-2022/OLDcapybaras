@@ -1,16 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Link } from 'react-router-dom'
-
+import { placeOrder } from '../actions/orders'
 import CartItem from './CartItem'
 
-function Cart (props) {
+function Cart(props) {
   const { children } = props
   const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
-  function submitCart () {
-    console.log('coming soon!')
+  function submitCart(orders) {
+    console.log('coming soon!', orders)
+
+
+    const action = placeOrder(orders)
+    dispatch(action)
   }
 
   return cart.length
@@ -40,7 +45,7 @@ function Cart (props) {
             {children} { /* Holds the WaitIndicator */}
             <button
               className='button-primary'
-              onClick={submitCart}>
+              onClick={() => submitCart(cart)}>
               Place Order
             </button>
           </span>
