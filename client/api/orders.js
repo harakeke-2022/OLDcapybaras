@@ -5,3 +5,9 @@ export function postOrder (order) {
     .post('/api/v1/orders')
     .send(order)
 }
+
+export function getOrders () {
+  return request
+    .get('api/v1/orders')
+    .then(res => res.body)
+}
