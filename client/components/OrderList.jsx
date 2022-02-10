@@ -30,37 +30,3 @@ function OrderList ({ children }) {
 }
 
 export default OrderList
-
-
-// import React, { useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-
-// import { fetchFilms } from '../actions/films'
-// import Indicator from './Indicator'
-
-// function List () {
-//   console.log('List is rendered')
-//   const dispatch = useDispatch()
-//   const filmState = useSelector(state => state.films)
-//   const indicator = useSelector(state => state.indicator)
-
-//   useEffect(() => {
-//     const action = fetchFilms()
-//     dispatch(action)
-//   }, [])
-
-//   return (<div className="list">
-//     <h2 className="list-title">Films</h2>
-//     {indicator && <Indicator />}
-//     <div className='cards'>
-//       {filmState.map(film =>
-//         <div className='card' key={film.id}>
-//           <h3>{film.name}</h3>
-//           <p>{film.quote}</p>
-//         </div>
-//       )}
-//     </div>
-//   </div>)
-// }
-
-// export default List

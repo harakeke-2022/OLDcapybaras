@@ -36,18 +36,31 @@ router.get('/', (req, res) => {
       })
 })
 
+// PATCH route for /api/v1/orders
+
+// db.editOrderStatus(id: number, newStatus: string)
+router.patch('/', (req, res) => {
+    const { id, status } = req.body
+    db.editOrderStatus(id, status)
+    .then((order)=> {
+        res.json(order)
+        return null
+    })
+    .catch((err) => {
+        res.status(500).send('DATABASE ERROR: ' + err.message)
+      })
+})
 
 
 
-// router.get('/', (req, res) => {
-//     db.getFilms()
-//       .then(films => {
-//         setTimeout(() => res.json(films)
-//           , 1000)
-//         return null
+// router.patch('/:id', (req, res) => {
+//     const updatePost = req.body
+//     const updatePostId =Number(req.params.id)
+//     db.updateExistingPost(updatePostId, updatePost)
+//       .then((betterPost) => {
+//         res.json({betterPost})
 //       })
-//       .catch(err => {
-//         console.error(err)
-//         res.status(500).json({ message: 'error in server' })
+//       .catch((err) => {
+//         res.status(500).json({error: err.message})
 //       })
 //   })
