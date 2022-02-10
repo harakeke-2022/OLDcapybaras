@@ -6,12 +6,12 @@ import { placeOrder } from '../actions/orders'
 
 import CartItem from './CartItem'
 
-function Cart(props) {
+function Cart (props) {
   const { children, history } = props
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
-  function submitCart() {
+  function submitCart () {
     const action = placeOrder(cart, props.history)
     dispatch(action)
     history.push('/orders')

@@ -1,0 +1,10 @@
+{
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "editor.trimAutoWhitespace": false,
+  "eslint.format.enable": true,
+  "typescript.format.enable": false,
+  "javascript.format.enable": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+}
