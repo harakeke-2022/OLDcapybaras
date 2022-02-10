@@ -10,8 +10,7 @@ function OrderList({ children }) {
   // const orders = []
   const orders = useSelector(state => state.orders)
 
-  // orders = useSlector(state => state.orders)
-  console.log('hey', orders);
+  // console.log('hey this is order', orders);
   const dispatch = useDispatch()
 
   useEffect(() => {

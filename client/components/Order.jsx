@@ -2,15 +2,15 @@ import React from 'react'
 
 import OrderItem from './OrderItem'
 
-function Order (props) {
+function Order(props) {
   const { id, products, createdAt, status } = props.order
 
-  function cancelOrder () {
-    console.log('coming soon!')
+  function cancelOrder() {
+    console.log('coming soon! from cancel')
   }
 
-  function completeOrder () {
-    console.log('coming soon!')
+  function completeOrder() {
+    console.log('coming soon! from complete')
   }
 
   return (

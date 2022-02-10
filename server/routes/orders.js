@@ -30,3 +30,21 @@ router.post('/', (req, res) => {
       res.status(500).send('Order error')
     })
 })
+
+// PATCH /api/v1/orders/
+router.patch('/', (req, res) => {
+
+  // console.log('heyyyy', req.body[0].id);
+  const id = Number(req.body[0].id)
+  const newState = req.body
+  const updatedOrder = { ...newState, id }
+  console.log();
+
+  db.editOrderStatus(updatedOrder)
+    .then(order => {
+      res.json(order)
+    })
+    .catch((err) => {
+      res.status(500).send('Order error')
+    })
+})
