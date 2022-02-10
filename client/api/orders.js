@@ -1,7 +1,7 @@
 import request from 'superagent'
 
-export function postOrders (order) {
-  return request.post('/api/v1/orders')
-    .then(res => res.body)
+export function postOrder (order) {
+  return request
+    .post('/api/v1/orders')
     .send(order)
 }
