@@ -23,28 +23,31 @@ router.post('/', (req, res) => {
     })
 })
 
+// GET route for /api/v1/orders 
+
+router.get('/', (req, res) => {
+    db.listOrders()
+    .then (orders => {
+        res.json(orders)
+        return null
+    })
+    .catch((err) => {
+        res.status(500).send('DATABASE ERROR: ' + err.message)
+      })
+})
 
 
 
 
-
-
-
-
-// /api/v1/orders
-
-// router.post('/', (req, res) => {
-//   const { name, quote } = req.body
-
-//   db.addFilms({ name, quote })
-//     .then(() => { // ignore ids from db function
-//       res.sendStatus(201)
-//       return null
-//     })
-//     .catch(err => {
-//       console.error(err)
-//       res.status(500).json({ message: 'error in server' })
-//     })
-// })
-
-// module.exports = router
+// router.get('/', (req, res) => {
+//     db.getFilms()
+//       .then(films => {
+//         setTimeout(() => res.json(films)
+//           , 1000)
+//         return null
+//       })
+//       .catch(err => {
+//         console.error(err)
+//         res.status(500).json({ message: 'error in server' })
+//       })
+//   })

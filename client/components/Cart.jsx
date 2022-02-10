@@ -17,6 +17,7 @@ function Cart (props) {
   function submitCart () {
     console.log('coming soon!')
     dispatch(createOrder())
+    props.history.push('./orders')
   }
 
   return cart.length
