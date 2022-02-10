@@ -2,6 +2,16 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+//  ===================================
+// STRETCH GOAL : use <Routes> </Routes> in App.component
+// WEEK4 WED-AM
+// npm i install
+// npm i react-router-dom to install latest 
+// newHook
+// useNavigate 
+// "history" was old vergion(version 5) of navigate
+//  ===================================
+
 import CartItem from './CartItem'
 
 import { placeOrder } from '../actions/orders'
@@ -19,10 +29,12 @@ function Cart(props) {
   // BEFORE:const [orders, setOrders] = useState({ id: 1, quantity: 0 })
 
   function submitCart(event) {
-    console.log('history', history)
+
     event.preventDefault()
     dispatch(placeOrder(cart))
+
     history.push('/orders');
+    // other way:  props.history('/orders')
 
   }
 

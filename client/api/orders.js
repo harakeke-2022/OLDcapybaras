@@ -1,11 +1,17 @@
 import request from 'superagent'
 
-export function postOrder(order) {
 
+export function getOrders() {
   return request
-    .post('/api/v1/orders')
-    .send(order)
+    .get('/api/v1/orders')
+    .then((res) => res.body)
 }
 
 
-// sending "order" to "router >> orders.js"
+export function postOrder(order) {
+  return request
+    .post('/api/v1/orders')
+    .send(order)
+  // sending "order" to "router >> orders.js"
+}
+
