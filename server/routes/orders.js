@@ -6,6 +6,7 @@ const router = express.Router()
 
 module.exports = router
 
+// GET - /api/v1/orders
 router.get('/', (req, res) => {
   db.listOrders()
     .then((orders) => {
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
     })
 })
 
+// POST - /api/v1/orders
 router.post('/', (req, res) => {
   console.log('order POST request: ', req.body)
   db.addOrder(req.body)
@@ -25,6 +27,6 @@ router.post('/', (req, res) => {
       return null
     })
     .catch(err => {
-      console.error('Hi', err)
+      console.error('error hi', err)
     })
 })

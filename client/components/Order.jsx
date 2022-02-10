@@ -7,10 +7,12 @@ function Order (props) {
 
   function cancelOrder () {
     console.log('coming soon!')
+    // TO DO
   }
 
   function completeOrder () {
     console.log('coming soon!')
+    // TO DO
   }
 
   return (
