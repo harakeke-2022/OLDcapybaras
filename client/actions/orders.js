@@ -1,25 +1,27 @@
 import { postOrder } from '../api/orders'
-export const ORDER_PENDING = 'ORDER_PENDING'
-export const ORDER_SUCCESS = 'ORDER_SUCCESS'
+export const PLACE_ORDER_PENDING = 'PLACE_ORDER_PENDING'
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS'
 
-export function orderPending () {
+export function placeOrderPending () {
   return {
-    type: ORDER_PENDING
+    type: PLACE_ORDER_PENDING
   }
 }
 
-export function orderSuccess () {
+export function placeOrderSuccess () {
   return {
-    type: ORDER_SUCCESS
+    type: PLACE_ORDER_SUCCESS
   }
 }
 
 export function placeOrder (order) {
   return (dispatch) => {
-    dispatch(orderPending())
+    dispatch(placeOrderPending())
     return postOrder(order)
       .then(() => {
-        return orderSuccess()
+        dispatch(placeOrderSuccess())
+        history.pushState('./orders')
+        return null
       })
       .catch((error) => {
         console.error(error)
