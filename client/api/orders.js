@@ -5,7 +5,7 @@ const orderUrl = '/api/v1/orders/'
 export function postOrder(orders) {
     return request
         .post(orderUrl)
-        .send(orders)  
+        .send(orders)
 }
 
 

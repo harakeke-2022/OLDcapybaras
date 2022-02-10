@@ -17,7 +17,6 @@ function cart(state = [], action) {
       return getUpdatedCart(state, action.updateInfo)
 
     case PLACE_ORDER_SUCCESS:
-      console.log('this is cart reducer', state, action)
       return getEmptyCart(state, action)
 
     default:

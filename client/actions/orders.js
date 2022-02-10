@@ -2,6 +2,8 @@ import { postOrder, getOrders } from '../api/orders';
 
 export const PLACE_ORDERS_PENDING = 'PLACE_ORDERS_PENDING'
 export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS'
+export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS'
+
 
 export function placeOrdersPending() {
     return {
@@ -16,14 +18,20 @@ export function placeOrdersSuccess(condition) {
     }
 }
 
+
+export function addOrderlist(orderArray) {
+    return {
+        type: FETCH_ORDERS_SUCCESS,
+        orderArray
+    }
+}
+
 export function placeOrder(orders) {
-    console.log('hey from Action/orders FIRST', orders);
     return (dispatch) => {
         dispatch(placeOrdersPending())
         return postOrder(orders)
             .then(() => {
                 dispatch(placeOrdersSuccess(true))
-
                 return null
             })
             .catch(error => {
@@ -34,11 +42,10 @@ export function placeOrder(orders) {
 
 export function fetchOrders() {
     return (dispatch) => {
-        dispatch(placeOrdersPending())
         return getOrders()
-            .then(() => {
-                dispatch(placeOrdersSuccess(true))
-                return null
+            .then((res) => {
+                dispatch(addOrderlist(res))
+                return getOrders()
             })
             .catch(error => {
                 console.error(error)

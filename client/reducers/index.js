@@ -11,5 +11,5 @@ export default combineReducers({
   cart,
   errorMessage,
   waiting,
-  // orders,
+  orders
 })

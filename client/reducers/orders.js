@@ -1,11 +1,19 @@
-export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS'
+import { FETCH_ORDERS_SUCCESS } from '../actions/orders'
 
 
-// export function name(params) {
-//     return {
-//         type: FETCH_ORDERS_SUCCESS,
 
-//     }
-// }
+function orders(state = [], action) {
+    switch (action.type) {
+        case FETCH_ORDERS_SUCCESS:
+            return action.orderArray
 
-//  I can understand readme
+        default:
+            return state
+    }
+}
+export default orders
+
+
+
+//💜💜💜
+//Also make sure to update the waiting reduce <== I didn't do this parts
